@@ -17,19 +17,13 @@ public class AvaliadorCreditoController {
     private final AvaliadorCreditoService service;
 
     @GetMapping
-    public String status(){
+    public String status() {
         return "ok";
     }
 
     @GetMapping(value = "situacao-cliente", params = "cpf")
-    public ResponseEntity consultarSituacaoCliente(@RequestParam("cpf") String cpf){
-        try {
-            SituacaoCliente situacaoCliente = avaliadorCreditoService.obterSituacaoCliente(cpf);
-            return ResponseEntity.ok(situacaoCliente);
-        } catch (DadosClienteNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        } catch (ErroComunicacaoMicroservicesException e) {
-            return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
-        }
+    public ResponseEntity consultarSituacaoCliente(@RequestParam("cpf") String cpf) {
+        SituacaoCliente situacaoCliente = service.obterSituacaoCliente(cpf);
+        return ResponseEntity.ok(situacaoCliente);
     }
 }
