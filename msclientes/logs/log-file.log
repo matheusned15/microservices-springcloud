@@ -44,3 +44,5 @@
 2023-02-25 02:18:51.397  INFO 10728 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MSCLIENTES/msclientes:d31cd099bf515e6613e27d9444de01ee: registering service...
 2023-02-25 02:18:51.431  INFO 10728 --- [restartedMain] i.g.m.msclientes.MsclientesApplication   : Started MsclientesApplication in 8.879 seconds (JVM running for 10.298)
 2023-02-25 02:18:51.438  INFO 10728 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_MSCLIENTES/msclientes:d31cd099bf515e6613e27d9444de01ee - registration status: 204
+2023-02-25 02:23:50.844  INFO 10728 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-02-25 02:28:50.856  INFO 10728 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
