@@ -1,5 +1,6 @@
 package io.github.matheusned.msavaliadorcredito.infra.clients;
 
+import io.github.matheusned.msavaliadorcredito.domain.model.Cartao;
 import io.github.matheusned.msavaliadorcredito.domain.model.CartaoCliente;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
