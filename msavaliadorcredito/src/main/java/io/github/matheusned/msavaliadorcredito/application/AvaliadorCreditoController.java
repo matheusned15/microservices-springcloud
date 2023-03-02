@@ -1,5 +1,7 @@
 package io.github.matheusned.msavaliadorcredito.application;
 
+import io.github.matheusned.msavaliadorcredito.application.ex.DadosClienteNotFoundException;
+import io.github.matheusned.msavaliadorcredito.application.ex.ErroComunicacaoMicroserviceException;
 import io.github.matheusned.msavaliadorcredito.domain.model.SituacaoCliente;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,14 @@ public class AvaliadorCreditoController {
 
     @GetMapping(value = "situacao-cliente", params = "cpf")
     public ResponseEntity consultarSituacaoCliente(@RequestParam("cpf") String cpf) {
-        SituacaoCliente situacaoCliente = service.obterSituacaoCliente(cpf);
-        return ResponseEntity.ok(situacaoCliente);
+        try {
+            SituacaoCliente situacaoCliente = service.obterSituacaoCliente(cpf);
+            return ResponseEntity.ok(situacaoCliente);
+        } catch (DadosClienteNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (ErroComunicacaoMicroserviceException e) {
+            return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
+
     }
 }
